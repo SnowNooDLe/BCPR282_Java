@@ -2,33 +2,33 @@
 //Exercise 4
 public class SumAndAverage {
 	//	Loop
-//	public static void main (String[] args){
-//		int sum = 0;
-//		double average;
-//		for (int i = 1; i <= 100; i++){
-//			sum += i;
-//		}
-//		average = ((double)sum) / 100;
-//		
-//		System.out.println(sum);
-//		System.out.println(average);
-//	}
+	// public static void main (String[] args){
+	// 	int sum = 0;
+	// 	double average;
+	// 	for (int i = 1; i <= 100; i++){
+	// 		sum += i;
+	// 	}
+	// 	average = ((double)sum) / 100;
+		
+	// 	System.out.println(sum);
+	// 	System.out.println(average);
+	// }
 	
 	//	Exercise 5 while-do
-//	public static void main (String[] args){
-//		int sum = 0;
-//		double average;
-//		int i = 1;
-//		while (i <= 100){
-//			sum += i;
-//			i++;
-//		}
-//
-//		average = ((double)sum) / 100;
-//		
-//		System.out.println(sum);
-//		System.out.println(average);
-//	}
+	// public static void main (String[] args){
+	// 	int sum = 0;
+	// 	double average;
+	// 	int i = 1;
+	// 	while (i <= 100){
+	// 		sum += i;
+	// 		i++;
+	// 	}
+
+	// 	average = ((double)sum) / 100;
+		
+	// 	System.out.println(sum);
+	// 	System.out.println(average);
+	// }
 	
 //	Exercise 6 do-while
 //	public static void main (String[] args){
