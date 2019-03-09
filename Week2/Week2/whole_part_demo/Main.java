@@ -20,7 +20,7 @@ public class Main {
 		
 		for (Toy t : toybox.allMyToys)
 		{
-			System.out.println(t.get());
+			System.out.println(t);
 		}
 	}
 }

@@ -43,4 +43,10 @@ public class Toy
 		return this.name + "\t ( " + this.color.toString() + " )\t @ $ " + this.cost.toPlainString();
 	}
 	
+//	Homework, write toString() 
+	public String toString() 
+	{
+		return "The name is : " + this.name + ", colour is " + this.color + ", cost @ " + this.cost;
+	}
+	
 }
