@@ -1,7 +1,8 @@
 package nz.ac.ara.dos0311.Assignment.Part1;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.awt.Point;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -29,6 +30,7 @@ class JUnitTestForPlayer {
 		System.out.println("@AfterAll - Execute once after all test methods in this class");
 	}
 
+//	Feature 5 Test
 	@Test
 	void test01() throws Exception{
 		try {
@@ -38,13 +40,13 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(5,2);
+			Player eyeball = new Player(5,2,board);
 			final String EXPECTED = "D|B";
 			final String ERROR_MSG = "It should be at Diamond Blue, Row : 5 and Col : 2";
 			
 //			Act
 //			print the label of it's position which should be DB (Diamond Blue)
-			final String ACTUAL = eyeball.currPosition();	
+			final String ACTUAL = eyeball.getCurrPosition();	
 			
 //			Assert
 			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
@@ -53,7 +55,7 @@ class JUnitTestForPlayer {
 		     System.out.println(e.getMessage());
 		   }
 	}
-	
+//	Movement test, inclue Feature 10, 11, 12, 13, 15, 16
 	@Test
 	void test02() throws Exception{
 		try {
@@ -63,7 +65,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(5,2);
+			Player eyeball = new Player(5,2,board);
 //			change to location of eyeball to row4, col2
 			eyeball.setPlayer(4, 2);
 			final String EXPECTED = "D|R";
@@ -71,7 +73,7 @@ class JUnitTestForPlayer {
 			
 //			Act
 //			print the label of it's position which should be DR (Diamond Red)
-			final String ACTUAL = eyeball.currPosition();	
+			final String ACTUAL = eyeball.getCurrPosition();	
 			
 //			Assert
 			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
@@ -91,7 +93,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(4,2);
+			Player eyeball = new Player(4,2,board);
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You cannot go backward at any time";
 			
@@ -116,7 +118,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(5,2);
+			Player eyeball = new Player(5,2,board);
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go straight";
 			
@@ -141,7 +143,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(5,2);
+			Player eyeball = new Player(5,2,board);
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -166,7 +168,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(5,2);
+			Player eyeball = new Player(5,2,board);
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -191,7 +193,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(5,2);
+			Player eyeball = new Player(5,2,board);
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -216,7 +218,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -241,7 +243,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -266,7 +268,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DY (Diamond Yellow)
-			Player eyeball = new Player(1,3);
+			Player eyeball = new Player(1,3,board);
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -291,7 +293,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, SB (Star Blue)
-			Player eyeball = new Player(4,1);
+			Player eyeball = new Player(4,1,board);
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -316,7 +318,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DY (Diamond Yellow)
-			Player eyeball = new Player(1,3);
+			Player eyeball = new Player(1,3,board);
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -341,7 +343,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, SB (Star Blue)
-			Player eyeball = new Player(4,1);
+			Player eyeball = new Player(4,1,board);
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -366,7 +368,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(4,2);
+			Player eyeball = new Player(4,2,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You cannot go backward at any time";
@@ -392,7 +394,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(5,2);
+			Player eyeball = new Player(5,2,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go straight";
@@ -418,7 +420,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -444,7 +446,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DR (Diamond Red)
-			Player eyeball = new Player(4,2);
+			Player eyeball = new Player(4,2,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -470,7 +472,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DR (Diamond Red)
-			Player eyeball = new Player(4,2);
+			Player eyeball = new Player(4,2,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -496,7 +498,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -522,7 +524,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, CG (Cross Green)
-			Player eyeball = new Player(1,4);
+			Player eyeball = new Player(1,4,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -548,7 +550,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, SB (Star Blue)
-			Player eyeball = new Player(4,1);
+			Player eyeball = new Player(4,1,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -574,7 +576,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DY (Diamond Yellow)
-			Player eyeball = new Player(1,3);
+			Player eyeball = new Player(1,3,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -600,7 +602,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, SB (Star Blue)
-			Player eyeball = new Player(4,1);
+			Player eyeball = new Player(4,1,board);
 			eyeball.direction = "l";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -626,7 +628,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(5,2);
+			Player eyeball = new Player(5,2,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You cannot go backward at any time";
@@ -652,7 +654,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go straight";
@@ -678,7 +680,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -704,7 +706,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DR (Diamond Red)
-			Player eyeball = new Player(4,2);
+			Player eyeball = new Player(4,2,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -730,7 +732,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DR (Diamond Red)
-			Player eyeball = new Player(4,2);
+			Player eyeball = new Player(4,2,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -756,7 +758,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -782,7 +784,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FY (Flower Yellow)
-			Player eyeball = new Player(1,2);
+			Player eyeball = new Player(1,2,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -808,7 +810,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, SG (Star Green)
-			Player eyeball = new Player(2,3);
+			Player eyeball = new Player(2,3,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -834,7 +836,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DY (Diamond Yellow)
-			Player eyeball = new Player(1,3);
+			Player eyeball = new Player(1,3,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -860,7 +862,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, CG (Cross Green)
-			Player eyeball = new Player(1,4);
+			Player eyeball = new Player(1,4,board);
 			eyeball.direction = "d";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -886,7 +888,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DR (Diamond Red)
-			Player eyeball = new Player(4,2);
+			Player eyeball = new Player(4,2,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You cannot go backward at any time";
@@ -912,7 +914,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go straight";
@@ -938,7 +940,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FB (Flower Blue)
-			Player eyeball = new Player(3,2);
+			Player eyeball = new Player(3,2,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -964,7 +966,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DR (Diamond Red)
-			Player eyeball = new Player(4,2);
+			Player eyeball = new Player(4,2,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -990,7 +992,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DB (Diamond Blue)
-			Player eyeball = new Player(4,4);
+			Player eyeball = new Player(4,4,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same shape";
@@ -1016,7 +1018,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, SG (Star Green)
-			Player eyeball = new Player(2,3);
+			Player eyeball = new Player(2,3,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -1042,7 +1044,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, FG (Flower Green)
-			Player eyeball = new Player(3,4);
+			Player eyeball = new Player(3,4,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -1068,7 +1070,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, CB (Cross Blue)
-			Player eyeball = new Player(1,1);
+			Player eyeball = new Player(1,1,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = true;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -1094,7 +1096,7 @@ class JUnitTestForPlayer {
 			Board board = new Board(6);
 			board.stageOneBoard();
 //			initialize eyeball at starting point first, DY (Diamond Yellow)
-			Player eyeball = new Player(1,3);
+			Player eyeball = new Player(1,3,board);
 			eyeball.direction = "r";
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
@@ -1114,14 +1116,12 @@ class JUnitTestForPlayer {
 	@Test
 	void test43() throws Exception{
 		try {
-			System.out.println("---------- TEST33 Whether destination block is eligible to go --------------");
+			System.out.println("---------- TEST43 Whether destination block is eligible to go --------------");
 			System.out.println("---------- Checking for right neither colour nor shape ----------");
 //			Arrange
 			Board board = new Board(6);
 			board.stageOneBoard();
-//			initialize eyeball at starting point first, DY (Diamond Yellow)
-			Player eyeball = new Player(2,4);
-			eyeball.direction = "r";
+			Player eyeball = new Player(1,3,board);
 			final Boolean EXPECTED = false;
 			final String ERROR_MSG = "You can only go to same color or same shape";
 			
@@ -1131,11 +1131,384 @@ class JUnitTestForPlayer {
 			
 //			Assert
 			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+	   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+	
+	@Test
+	void test44() throws Exception{
+		try {
+			System.out.println("---------- TEST44 Whether destination block is eligible to go --------------");
+			System.out.println("---------- Checking for right neither colour nor shape ----------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+			board.setGoal(0, 3);
+			
+			final Point EXPECTED = new Point(0, 3);
+			final String ERROR_MSG = "Goal must be row 0 col 3, Flower Red";
+			
+//			Act
+//			I know its magic number but will be using iterator for later in andorid implementation as there could be
+//			more than one goal
+			final Point ACTUAL = board.goal[0];		
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
 		   }
-		   catch (IllegalArgumentException e) {
-		     System.out.println(e.getMessage());
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+	
+//	Feature 19 Test
+	@Test
+	void test45() throws Exception{
+		try {
+			System.out.println("---------- TEST45 when eyeball goes to left, is it turning left as well ? --------------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+			
+//			spawning on Diamond, Yellow facing up
+			Player eyeball = new Player(1,3,board);
+			
+//			move to Flower yellow, which is moving left from Diamond Yellow
+			eyeball.moveEyeball(1, 2);
+			final String EXPECTED = "l";
+			final String ERROR_MSG = "Eh eh, turning left, must be l";
+			
+//			Act
+			final String ACTUAL = eyeball.getCurrentDirection();	
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
 		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+	
+//	Feature 20 Test
+	@Test
+	void test46() throws Exception{
+		try {
+			System.out.println("---------- TEST46 when eyeball goes to right, is it turning right as well ? --------------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+			
+//			spawning on Flower, Blue facing up
+			Player eyeball = new Player(4,3,board);
+			
+//			move to Diamond Blue, which is moving right from Flower Blue
+			eyeball.moveEyeball(4, 4);
+			final String EXPECTED = "r";
+			final String ERROR_MSG = "Eh eh, turning left, must be l";
+			
+//			Act
+			final String ACTUAL = eyeball.getCurrentDirection();	
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
 	}
 
+//	Feature 21 Test
+	@Test
+	void test47() throws Exception{
+		try {
+			System.out.println("---------- TEST47 when eyeball gets Goal block, player wins --------------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+			board.setGoal(0, 3);
+//			spawning on Flower, Blue facing up
+			Player eyeball = new Player(4,3,board);
+			
+//			move to Diamond Blue, which is moving right from Flower Blue
+			eyeball.moveEyeball(0, 3);
+			final Boolean EXPECTED = true;
+			final String ERROR_MSG = "Eh eh, turning left, must be l";
+			
+//			Act
+			final Boolean ACTUAL = eyeball.gameIsOver;	
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+	
+//	Feature 17 Test
+	@Test
+	void test48() throws Exception{
+		try {
+			System.out.println("---------- TEST48 Test the timer --------------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+			board.setGoal(0, 3);
+//			spawning on Flower, Blue facing up
+			Player eyeball = new Player(4,3,board);
+			
+//			move to Diamond Blue, which is moving right from Flower Blue
+			eyeball.moveEyeball(0, 3);
+			System.out.println(board.calculateTimer());
+			final Boolean EXPECTED = true;
+			final String ERROR_MSG = "Eh eh, time taken must be bigger than 0 as 0sec means didnt even start";
+			
+//			Act
+			final Boolean ACTUAL = board.calculateTimer() > 0;	
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+	
+//	Feature 14 Test
+	@Test
+	void test49() throws Exception{
+		try {
+			System.out.println("---------- TEST49 Player lost --------------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+			board.setGoal(0, 3);
+//			spawning on Flower, Blue facing up
+			Player eyeball = new Player(4,3,board);
+//			playerFailed method check whether movement is higher than 50
+			eyeball.countMovement = 49;
+//			two more movement from 49, 51 which is higher than 50
+//			this case program will measure game status as failure.
+			eyeball.moveEyeball(4, 1);
+			eyeball.moveEyeball(1, 1);
+			final Boolean EXPECTED = true;
+			final String ERROR_MSG = "Eh eh, time taken must be bigger than 0 as 0sec means didnt even start";
+			
+//			Act
+			final Boolean ACTUAL = eyeball.playerFailed();	
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+	
+//	Feature 9 Test
+	@Test
+	void test50() throws Exception{
+		try {
+			System.out.println("---------- TEST50 movement count --------------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+			board.setGoal(0, 3);
+//			spawning on Flower, Blue facing up
+			Player eyeball = new Player(4,3,board);
+//			moving two times which will increase 2, 1 each.
+			eyeball.moveEyeball(4, 1);
+			eyeball.moveEyeball(1, 1);
+			final int EXPECTED = 2;
+			final String ERROR_MSG = "Eh eh, time taken must be bigger than 0 as 0sec means didnt even start";
+			
+//			Act
+			final int ACTUAL = eyeball.getCurrentMoveCount();	
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+//	Feature 7&8 Test
+	@Test
+	void test51() throws Exception{
+		try {
+			System.out.println("---------- TEST51 create tile with certain colour and shape --------------");
+//			Arrange
+			Board board = new Board(6);
+			Block block = new Block();
+//			set tile color to r, red, shape to f, flower
+			block.setShape("f");
+			block.setColor("r");
+//			get those into string and store into array
+			board.map[0][3] = block.getBlock();
+			
+			final String EXPECTED = "F|R";
+			final String ERROR_MSG = "Eh eh, I set this block as Flower Red";
+			
+//			Act
+			final String ACTUAL = board.map[0][3];	
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+	
+//	Feature 6 Test
+	@Test
+	void test52() throws Exception{
+		try {
+			System.out.println("---------- TEST52 generate Eyeball --------------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+//			generate eyeball at row 4, col 2 board
+			Player eyeball = new Player(4, 2, board);
+			final String EXPECTED = "D|R";
+			final String ERROR_MSG = "Eh eh, I set eyeball at coordinate (4,2)";
+			
+//			Act
+			final String ACTUAL = eyeball.getCurrPosition();
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+
+//	Feature 4 Test
+	@Test
+	void test53() throws Exception{
+		try {
+			System.out.println("---------- TEST53 Reset the game --------------");
+//			Arrange
+			Board board = new Board(6);
+			board.stageOneBoard();
+//			generate eyeball at row 5, col 2 board
+			Player eyeball = new Player(5, 2, board);
+//			using setPlayer method as we just need to put eyeball somewhere else and put them back to starting point
+//			by resetting game.
+			eyeball.setPlayer(2, 2);
+			eyeball.setPlayer(3, 3);
+			eyeball.setPlayer(4, 4);
+			
+//			now player is back to row 4 and col 2, direction is back to up
+//			0 movement
+			eyeball.resetPlayer();
+			
+			final String EXPECTED = "D|B";
+			final String ERROR_MSG = "Eh eh, I set eyeball at coordinate (4,2)";
+			
+//			Act
+			final String ACTUAL = eyeball.getCurrPosition();
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+	
+//	Feature 3 Test
+	@Test
+	void test54() throws Exception{
+		try {
+			System.out.println("---------- TEST54 Choose the maze level --------------");
+//			Arrange
+			int size = 6;
+			Board board = new Board(size);
+//			this can be changed for different level but we are testing with stage one.
+			board.stageOneBoard();
+			
+			String EXPECTED = "";
+			final String ERROR_MSG = "Eh eh, I set eyeball at coordinate (4,2)";
+			
+			for (int row = 0; row < size; row++) {
+	            for (int col = 0; col < size; col++) {
+	                EXPECTED += " " + board.map[row][col];
+	            }
+	            EXPECTED += " ";
+	        }
+//			Act
+			final String ACTUAL = " X|X X|X X|X F|R X|X X|X  X|X C|B F|Y D|Y C|G X|X  X|X F|G S|R S|G D|Y X|X  X|X F|R F|B S|R F|G X|X  X|X S|B D|R F|B D|B X|X  X|X X|X D|B X|X X|X X|X ";
+		
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+
+//	Feature 2 Test
+	@Test
+	void test55() throws Exception{
+		try {
+			System.out.println("---------- TEST55 Go back one movement --------------");
+//			Arrange
+			int size = 6;
+			Board board = new Board(size);
+			board.stageOneBoard();
+//			we are going to move from Diamond Blue to Flower Blue then bring it back to start point.
+			Player eyeball = new Player(5,2,board);
+			eyeball.moveEyeball(3, 2);
+			
+//			going back once
+			eyeball.goBackOneMove();
+			
+			final String EXPECTED = "D|B";
+			final String ERROR_MSG = "Eh eh, I set eyeball at coordinate (4,2)";
+			
+
+//			Act
+			final String ACTUAL = eyeball.getCurrPosition();
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
+
+//	Feature 1 Test
+	@Test
+	void test56() throws Exception{
+		try {
+			System.out.println("---------- TEST56 Turning sound off --------------");
+//			Arrange
+//			when board is initilized, default setup for music is true, playing
+			int size = 6;
+			Board board = new Board(size);
+			board.stageOneBoard();
+
+			
+			final boolean EXPECTED = false;
+			final String ERROR_MSG = "Eh eh, I set eyeball at coordinate (4,2)";
+			
+
+//			Act
+			board.soundOff();
+			final boolean ACTUAL = board.musicStatus;
+			
+//			Assert
+			assertEquals(EXPECTED, ACTUAL, ERROR_MSG);
+		   }
+	   catch (IllegalArgumentException e) {
+		   System.out.println(e.getMessage());
+	   }
+	}
 }
 

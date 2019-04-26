@@ -1,88 +1,156 @@
 package nz.ac.ara.dos0311.Assignment.Part1;
 
+import java.awt.Point;
+
 public class Board {
     public int size;
-    public static String[][] map;
+    public String[][] map;
     public int mazeLevel;
+    public Block block;
+    Point[] goal = new Point[10];
+    public int numberOfGoals;
+    public long start;
+    public long end;
+    public boolean musicStatus;
+    
 //    Constructor
 //    No algorithm, so need to hard code
 //    Feature 5, generate Maze
     public Board (int size) {
         this.size = size;
+        this.numberOfGoals = 0;
+        this.musicStatus = true;
         this.map = new String[size][size];
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                this.map[row][col] = "X|X";
+            	block = new Block();
+                this.map[row][col] = block.getBlock();
             }
         }
-        this.mazeLevel = 1;
+        this.start = System.currentTimeMillis();
+
     }
 //    constructor for default map size by 6x6
     public Board() {
     	this.size = 6;
+    	this.numberOfGoals = 0;
+        this.musicStatus = true;
     	this.map = new String[size][size];
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 this.map[row][col] = "X|X";
             }
         }
-        this.mazeLevel = 1;
     }
     
+//  Feature 17
+    public double calculateTimer() {
+    	return (this.end - this.start )/1000.0;
+    }
+//	Feature 1. Sound On / Off done
+	public void soundOff() {
+		this.musicStatus = false;
+	}
+	public void soundOn() {
+		this.musicStatus = true;
+	}
+	
+//	Feature 18, setting certain tile as a goal
+	public void setGoal(int row, int col) {
+		this.goal[this.numberOfGoals] = new Point(row, col);
+		this.numberOfGoals++;
+	}
+    
 //    Feature 5-1. Creating Maze
-    public static void stageOneBoard() {
+    public void stageOneBoard() {
 //    	first row
-    	map[0][3] = "F|R";
+    	block.changeBlock("F", "R");
+    	map[0][3] = block.getBlock();
 //    	second row
-    	map[1][1] = "C|B";
-    	map[1][2] = "F|Y";
-    	map[1][3] = "D|Y";
-    	map[1][4] = "C|G";
+    	block.changeBlock("C", "B");
+    	map[1][1] = block.getBlock();
+    	block.changeBlock("F", "Y");
+    	map[1][2] = block.getBlock();
+    	block.changeBlock("D", "Y");
+    	map[1][3] = block.getBlock();
+    	block.changeBlock("C", "G");
+    	map[1][4] = block.getBlock();
 //    	Third row
-    	map[2][1] = "F|G";
-    	map[2][2] = "S|R";
-    	map[2][3] = "S|G";
-    	map[2][4] = "D|Y";
+    	block.changeBlock("F", "G");
+    	map[2][1] = block.getBlock();
+    	block.changeBlock("S", "R");
+    	map[2][2] = block.getBlock();
+    	block.changeBlock("S", "G");
+    	map[2][3] = block.getBlock();
+    	block.changeBlock("D", "Y");
+    	map[2][4] = block.getBlock();
 //    	Fourth row
-    	map[3][1] = "F|R";
-    	map[3][2] = "F|B";
-    	map[3][3] = "S|R";
-    	map[3][4] = "F|G";
+    	block.changeBlock("F", "R");
+    	map[3][1] = block.getBlock();
+    	block.changeBlock("F", "B");
+    	map[3][2] = block.getBlock();
+    	block.changeBlock("S", "R");
+    	map[3][3] = block.getBlock();
+    	block.changeBlock("F", "G");
+    	map[3][4] = block.getBlock();
 //    	Fifth row
-    	map[4][1] = "S|B";
-    	map[4][2] = "D|R";
-    	map[4][3] = "F|B";
-    	map[4][4] = "D|B";
+    	block.changeBlock("S", "B");
+    	map[4][1] = block.getBlock();
+    	block.changeBlock("D", "R");
+    	map[4][2] = block.getBlock();
+    	block.changeBlock("F", "B");
+    	map[4][3] = block.getBlock();
+    	block.changeBlock("D", "B");
+    	map[4][4] = block.getBlock();
 //    	Sixth row
-    	map[5][2] = "D|B";
+    	block.changeBlock("D", "B");
+    	map[5][2] = block.getBlock();
     }
     
 //  Feature 5-2. Creating Maze
-    public static void stageTwoBoard() {
+    public void stageTwoBoard() {
 //  	first row
-  		map[0][3] = "F|R";
+    	block.changeBlock("F", "R");
+  		map[0][3] = block.getBlock();
 //  	second row
-	  	map[1][1] = "C|B";
-	  	map[1][2] = "F|B";
-	  	map[1][3] = "D|B";
-	  	map[1][4] = "C|G";
+  		block.changeBlock("C", "B");
+	  	map[1][1] = block.getBlock();
+	  	block.changeBlock("F", "B");
+	  	map[1][2] = block.getBlock();
+	  	block.changeBlock("D", "B");
+	  	map[1][3] = block.getBlock();
+	  	block.changeBlock("C", "G");
+	  	map[1][4] = block.getBlock();
 //  	Third row
-	  	map[2][1] = "F|G";
-	  	map[2][2] = "S|R";
-	  	map[2][3] = "S|G";
-	  	map[2][4] = "F|Y";
+	  	block.changeBlock("F", "G");
+	  	map[2][1] = block.getBlock();
+	  	block.changeBlock("S", "R");
+	  	map[2][2] = block.getBlock();
+	  	block.changeBlock("S", "G");
+	  	map[2][3] = block.getBlock();
+	  	block.changeBlock("F", "Y");
+	  	map[2][4] = block.getBlock();
 //  	Fourth row
-	  	map[3][1] = "F|R";
-	  	map[3][2] = "D|G";
-	  	map[3][3] = "S|R";
-	  	map[3][4] = "S|Y";
+	  	block.changeBlock("F", "R");
+	  	map[3][1] = block.getBlock();
+	  	block.changeBlock("D", "G");
+	  	map[3][2] = block.getBlock();
+	  	block.changeBlock("S", "R");
+	  	map[3][3] = block.getBlock();
+	  	block.changeBlock("S", "Y");
+	  	map[3][4] = block.getBlock();
 //  	Fifth row
-	  	map[4][1] = "C|G";
-	  	map[4][2] = "D|R";
-	  	map[4][3] = "F|B";
-	  	map[4][4] = "D|G";
+	  	block.changeBlock("C", "G");
+	  	map[4][1] = block.getBlock();
+	  	block.changeBlock("D", "R");
+	  	map[4][2] = block.getBlock();
+	  	block.changeBlock("F", "B");
+	  	map[4][3] = block.getBlock();
+	  	block.changeBlock("D", "G");
+	  	map[4][4] = block.getBlock();
 //  	Sixth row
-	  	map[5][2] = "D|B";
+	  	block.changeBlock("D", "B");
+	  	map[5][2] = block.getBlock();
     }
 
     //	Feature 3. Choose maze level attribute will come from user click later on.

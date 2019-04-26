@@ -1,8 +1,8 @@
-package nz.ac.ara.dos0311.Assignment.Part1;
+ package nz.ac.ara.dos0311.Assignment.Part1;
 
 public class Block {
-	String shape;
-	String color;
+	public String shape;
+	public String color;
 //	Constructor for Block
 	public Block(String newShape, String newColor) {
 		this.shape = newShape;
@@ -15,16 +15,25 @@ public class Block {
 	}
 //	Feature 7, generate tile with certain shape
 	public void setShape(String certainShape) {
-		this.shape = certainShape;
+		this.shape = certainShape.toUpperCase();
 	}
 	
 //	Feature 8, coloring that shape.
-	public void colourShape(String certainColour) {
-		this.color = certainColour;
+	public void setColor(String certainColour) {
+		this.color = certainColour.toUpperCase();
+	}
+//	if you want to change both shape and color
+	public void changeBlock(String newShape, String newColor) {
+		this.setShape(newShape);
+		this.setColor(newColor);
 	}
 	
-//	Feature 18, setting certain tile as a goal
-	public void setGoal() {
-		
+
+//	will be used to define into each cells in Board, also for setting up for goal.
+	public String getBlock() {
+		String newBlock = this.shape + "|" + this.color;
+		return newBlock;
 	}
+	
+	
 }
